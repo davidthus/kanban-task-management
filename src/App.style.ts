@@ -6,4 +6,6 @@ export const AppWrapper = styled.main`
   min-height: 100vh;
   background-color: ${({ theme }: themeType) => theme.bodyBg};
   padding-top: calc(97px + 2rem);
+  padding-left: ${(props: any) =>
+    props.sidebarOpen ? "calc(clamp(270px, 25vw, 300px) + 2rem)" : 0};
 `;

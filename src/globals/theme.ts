@@ -104,7 +104,7 @@ export const dark = {
   subTaskCheckBoxBg: "#20212C",
   subTaskCheckBoxHover: "#635FC7",
 
-  checkBoxBg: "2B2C37",
+  checkBoxBg: "#2B2C37",
   completedCheckBoxBg: "#635FC7",
   // input field
 

@@ -2,7 +2,8 @@ import React, { useEffect } from "react";
 import { ThemeProvider } from "styled-components";
 import { AppWrapper } from "./App.style";
 import { useAppDispatch, useAppSelector } from "./app/hooks";
-import Navbar from "./components/Navbar";
+import Navbar from "./components/Navbar/Navbar";
+import Sidebar from "./components/Sidebar/Sidebar";
 import { toggleTheme } from "./features/dataSlice";
 import { saveToLocalStorage } from "./utils/localStorage";
 
@@ -24,8 +25,13 @@ function App() {
   return (
     <ThemeProvider theme={state.data.theme === "light" ? light : dark}>
       <GlobalStyle />
-      <AppWrapper>
-        <Navbar />
+      <AppWrapper
+        sidebarOpen={state.data.sideBarsOpen === "true" ? true : false}
+      >
+        <Sidebar />
+        <Navbar
+          sidebarOpen={state.data.sideBarsOpen === "true" ? true : false}
+        />
         <button onClick={() => dispatch(toggleTheme())}>Toggle</button>
       </AppWrapper>
     </ThemeProvider>

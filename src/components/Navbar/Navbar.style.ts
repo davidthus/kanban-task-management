@@ -10,22 +10,25 @@ export const NavbarContainer = styled.header`
   display: grid;
   height: 97px;
   background-color: ${({ theme }: themeType) => theme.navBarBg};
-  grid-template: 1fr / clamp(280px, 25vw, 300px) 1fr;
+  grid-template: 1fr / clamp(270px, 25vw, 300px) 1fr;
 `;
 
 export const LogoWrapper = styled.aside`
   width: 100%;
   display: flex;
   align-items: center;
+  border-right: 1px solid ${({ theme }: themeType) => theme.border};
   padding-left: 2rem;
+  border-bottom: ${(props: any) =>
+    props.sidebarOpen ? "none" : `1px solid ${props.theme.border}`};
 `;
 
 export const NavbarWrapper = styled.nav`
   display: flex;
-  align-items: flex-start;
+  height: 100%;
+  align-items: center;
   justify-content: space-between;
   width: 100%;
-  border-left: 1px solid ${({ theme }: themeType) => theme.border};
   border-bottom: 1px solid ${({ theme }: themeType) => theme.border};
   padding-left: 2rem;
   padding-right: 4rem;
@@ -34,4 +37,17 @@ export const NavbarWrapper = styled.nav`
 export const BoardName = styled.h1`
   ${HeadingXL}
   color: ${({ theme }: themeType) => theme.textPrimary};
+`;
+
+export const ButtonsWrapper = styled.div`
+  display: flex;
+  gap: 1.5rem;
+  align-content: center;
+  justify-content: center;
+`;
+
+export const VerticalDotsWrapper = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
 `;
