@@ -75,7 +75,7 @@ export const AddTask = styled(Button)`
   ${HeadingM}
   opacity: ${(props: any) => (props.disabled ? 0.6 : 1)};
   cursor: ${(props: any) => (props.disabled ? "auto" : "pointer")};
-  padding: 1rem 2.5rem;
+  padding: 1rem clamp(1.5rem, 3vw, 2.5rem);
 
   &:hover {
     background: ${(props: any) =>

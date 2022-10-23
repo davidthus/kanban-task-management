@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { themeType } from "../types/themeTypes";
 
 export const GlobalStyle = createGlobalStyle`
   * {
@@ -15,10 +16,13 @@ export const GlobalStyle = createGlobalStyle`
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: rgb(242, 244, 255);
+  background-color: ${({ theme }: themeType) => theme.bodyBg};
     min-height: 100vh;
     width: 100vw;
     overflow-x: hidden;
+    position: absolute;
+    inset: 0;
+
 }
 
 code {

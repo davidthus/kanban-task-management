@@ -1,6 +1,7 @@
 import React from "react";
 import { useAppSelector } from "../../app/hooks";
 import {
+  AddTaskIcon,
   DarkLogoIcon,
   LightLogoIcon,
   MobileLogoIcon,
@@ -39,7 +40,9 @@ const Navbar = ({ sidebarOpen }: NavbarProps) => {
       <NavbarWrapper>
         <BoardName>{data.activeBoard}</BoardName>
         <ButtonsWrapper>
-          <AddTask disabled>+ Add New Task</AddTask>
+          <AddTask disabled>
+            {isMobileSize ? <AddTaskIcon /> : "+ Add New Task"}
+          </AddTask>
           <VerticalDotsWrapper onClick={() => console.log("im clicked")}>
             <VerticalDotsIcon />
           </VerticalDotsWrapper>

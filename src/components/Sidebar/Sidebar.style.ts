@@ -3,7 +3,7 @@ import { themeType } from "../../types/themeTypes";
 
 export const SidebarContainer = styled.aside`
   height: calc(100vh - 97px);
-  width: clamp(270px, 25vw, 300px);
+  width: clamp(261px, 25vw, 300px);
   position: absolute;
   bottom: 0;
   left: 0;
