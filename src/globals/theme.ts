@@ -27,19 +27,18 @@ code {
 }
 
 ::-webkit-scrollbar-track {
-    box-shadow: rgba(0, 0, 0, 0.3) 0px 0px 6px inset;
-    border-radius: 10px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb {
-    border-radius: 10px;
-    background: rgba(255, 255, 255, 0.3);
-    box-shadow: rgba(0, 0, 0, 0.5) 0px 0px 6px inset;
+  border-radius: 5px;
+    background: rgb(43, 44, 55);
 }
 
 ::-webkit-scrollbar {
-    width: 5px;
-    height: 5px;
+  width: 10px;
+    height: 10%;
+    background: rgb(32, 33, 44);
 }
 `;
 
@@ -65,6 +64,7 @@ export const light = {
   dropDownBorder: "#828FA3",
   dropDownActive: "#635FC7",
   dropDownBg: "white",
+  dropDownIdle: "#828FA3",
 
   // buttons
   buttonPrimaryBg: "#635FC7",
@@ -111,6 +111,7 @@ export const dark = {
   textFieldError: "#EA5555",
   // drop down
   dropDownIdle: "#828FA3",
+  dropDownBorder: "#828FA3",
   dropDownActive: "#635FC7",
   dropDownBg: "#20212C",
 

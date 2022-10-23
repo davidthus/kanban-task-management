@@ -9,9 +9,9 @@ type UseMatchMediaType = {
 type EventType = MediaQueryList | MediaQueryListEvent;
 
 export const useMatchMedia = (): UseMatchMediaType => {
-  const mobileQuery = matchMedia("(min-width: 10px) and (max-width: 650px)");
-  const tabletQuery = matchMedia("(min-width: 651px) and (max-width: 900px)");
-  const desktopQuery = matchMedia("(min-width: 901px)");
+  const mobileQuery = matchMedia("(max-width: 375px)");
+  const tabletQuery = matchMedia("(min-width: 375px) and (max-width: 768px)");
+  const desktopQuery = matchMedia("(min-width: 1440px)");
 
   const [isMobileSize, setIsMobileSize] = useState(false);
   const [isTabletSize, setIsTabletSize] = useState(false);
@@ -43,7 +43,7 @@ export const useMatchMedia = (): UseMatchMediaType => {
       tabletQuery.removeEventListener("change", handleTabletMediaChanged);
       desktopQuery.removeEventListener("change", handleDesktopMediaChanged);
     };
-  }, []);
+  }, [mobileQuery, tabletQuery, desktopQuery]);
 
   return { isMobileSize, isTabletSize, isDesktopSize };
 };

@@ -12,4 +12,3 @@ export { ReactComponent as VerticalDotsIcon } from "./icon-vertical-ellipsis.svg
 export { ReactComponent as DarkLogoIcon } from "./logo-dark.svg";
 export { ReactComponent as LightLogoIcon } from "./logo-light.svg";
 export { ReactComponent as MobileLogoIcon } from "./logo-mobile.svg";
-export { ReactComponent as PurpleCheckIcon } from "./purple-check-icon.svg";
