@@ -95,3 +95,61 @@ export const NewBoardButton = styled.button`
   background: transparent;
   color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
 `;
+
+export const TogglesWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 0.5rem;
+`;
+
+export const HideSidebarToggle = styled.button`
+  ${itemSpacing}
+  ${HeadingM}
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  border: none;
+  width: 90%;
+  padding: 1rem 2rem;
+  transition: 0.3s;
+  border-bottom-right-radius: 99rem;
+  border-top-right-radius: 99rem;
+  cursor: pointer;
+  background-color: ${({ theme }: themeType) => theme.asideBg};
+  color: ${({ theme }: themeType) => theme.grey};
+
+  & svg path {
+    fill: ${({ theme }: themeType) => theme.grey};
+  }
+
+  &:hover {
+    background-color: ${({ theme }: themeType) => theme.inactiveBoardTabHover};
+    color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
+
+    & svg path {
+      fill: ${({ theme }: themeType) => theme.buttonPrimaryBg};
+    }
+  }
+`;
+
+export const ShowSidebarToggle = styled.button`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
+  position: absolute;
+  left: 0;
+  bottom: 4vh;
+  width: 56px;
+  height: 48px;
+  border-top-right-radius: 99rem;
+  border-bottom-right-radius: 99rem;
+  border: none;
+  outline: none;
+  cursor: pointer;
+
+  &:hover {
+    background-color: ${({ theme }: themeType) => theme.buttonPrimaryHover};
+  }
+`;

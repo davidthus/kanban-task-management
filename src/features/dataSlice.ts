@@ -17,7 +17,7 @@ export const dataSlice = createSlice({
     },
 
     toggleSidebar: (state) => {
-      state.sideBarsOpen = state.sideBarsOpen ? "false" : "true";
+      state.sideBarsOpen = state.sideBarsOpen === "true" ? "false" : "true";
     },
 
     toggleActiveBoard: (state, action) => {
