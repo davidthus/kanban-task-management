@@ -24,6 +24,7 @@ export interface themeType {
     deleteButtonBg: string;
     deleteButtonText: string;
     deleteButtonHover: string;
+    inactiveBoardTabHover: string;
     textPrimary: string;
     border: string;
     grey: string;

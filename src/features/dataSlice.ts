@@ -21,7 +21,7 @@ export const dataSlice = createSlice({
     },
 
     toggleActiveBoard: (state, action) => {
-      state.activeBoard = action.payload;
+      state.activeBoard = action.payload.board;
     },
   },
 });

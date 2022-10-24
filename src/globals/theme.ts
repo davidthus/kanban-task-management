@@ -80,6 +80,7 @@ export const light = {
   deleteButtonBg: "#EA5555",
   deleteButtonText: "white",
   deleteButtonHover: "#FF9898",
+  inactiveBoardTabHover: "#97979730",
 
   // text
 
@@ -129,6 +130,7 @@ export const dark = {
   deleteButtonBg: "#EA5555",
   deleteButtonText: "white",
   deleteButtonHover: "#FF9898",
+  inactiveBoardTabHover: "white",
   // text
 
   textPrimary: "white",
