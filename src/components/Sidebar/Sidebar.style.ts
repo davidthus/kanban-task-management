@@ -64,6 +64,11 @@ export const BoardTab = styled.li`
   color: ${(props: any) =>
     props.active ? props.theme.buttonPrimaryText : props.theme.grey};
 
+  & svg path {
+    fill: ${(props: any) =>
+      props.active ? props.theme.buttonPrimaryText : props.theme.grey};
+  }
+
   &:hover {
     background-color: ${(props: any) =>
       props.active
@@ -71,6 +76,11 @@ export const BoardTab = styled.li`
         : props.theme.inactiveBoardTabHover};
     color: ${(props: any) =>
       props.active ? props.theme.white : props.theme.buttonPrimaryBg};
+
+    & svg path {
+      fill: ${(props: any) =>
+        props.active ? props.theme.white : props.theme.buttonPrimaryBg};
+    }
   }
 `;
 
@@ -85,7 +95,3 @@ export const NewBoardButton = styled.button`
   background: transparent;
   color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
 `;
-
-export const BoardIconTab = styled.svg``;
-
-export const BoardIconCreate = styled.svg``;
