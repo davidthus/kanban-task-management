@@ -53,7 +53,8 @@ export const light = {
   taskBg: "white",
   scrollBg: "white",
   NewColumn:
-    "linear-gradient(to bottom,rgba(121,132,147,.2),rgba(130,143,163,.1),rgba(130,143,163,0))",
+    "linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%)",
+
   // sub task checkbox
   subTaskCheckBoxBg: "#F4F7FD",
   subTaskCheckBoxHover: "#979797",

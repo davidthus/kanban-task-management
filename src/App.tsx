@@ -37,7 +37,7 @@ function App() {
           .filter((board) => board.name === state.data.activeBoard)
           .map((board, i) => {
             if (i === 0) {
-              return <Board board={board} />;
+              return <Board key={i} board={board} />;
             } else {
               return null;
             }

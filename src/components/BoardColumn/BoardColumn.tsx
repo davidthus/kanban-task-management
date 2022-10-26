@@ -11,19 +11,25 @@ import {
 
 interface BoardColumnProps {
   column: boardColumn;
+  index: number;
 }
 
-function BoardColumn({ column }: BoardColumnProps) {
+function BoardColumn({ column, index }: BoardColumnProps) {
   return (
     <Container>
       <ColumnName>
-        {column.name.toLowerCase() === "todo" && <BlueCircle />}
-        {column.name.toLowerCase() === "doing" && <PurpleCircle />}
-        {column.name.toLowerCase() === "done" && <GreenCircle />}
+        {index === 0 && <BlueCircle />}
+        {index === 1 && <PurpleCircle />}
+        {index === 2 && <GreenCircle />}
         {column.name} ({column.tasks.length})
       </ColumnName>
       {column.tasks.map((task, i) => (
-        <TaskCard column={column} title={task.title} subtasks={task.subtasks} />
+        <TaskCard
+          key={i}
+          column={column}
+          title={task.title}
+          subtasks={task.subtasks}
+        />
       ))}
     </Container>
   );

@@ -14,7 +14,8 @@ const itemSpacing = css`
 export const SidebarContainer = styled.aside`
   height: calc(100vh - clamp(80px, 10vw, 97px));
   width: clamp(261px, 25vw, 300px);
-  position: absolute;
+  z-index: 3;
+  position: fixed;
   bottom: 0;
   left: 0;
   display: ${(props: any) => (props.open ? "flex" : "none")};

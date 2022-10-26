@@ -15,7 +15,7 @@ export const BackdropContainer = styled(motion.div)`
   width: 100vw;
   height: ${(props: BackdropContainerProps) =>
     props.sidebar ? "calc(100vh - clamp(80px, 10vw, 97px))" : "100vh"};
-  background-color: rgba(0, 0, 0, 0.3);
+  background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   flex-direction: column;
   padding-top: ${(props: BackdropContainerProps) =>
@@ -23,4 +23,5 @@ export const BackdropContainer = styled(motion.div)`
   justify-content: ${(props: BackdropContainerProps) =>
     props.sidebar ? "flex-start" : "center"};
   align-items: center;
+  z-index: ${(props: BackdropContainerProps) => (props.sidebar ? 2 : 10)};
 `;

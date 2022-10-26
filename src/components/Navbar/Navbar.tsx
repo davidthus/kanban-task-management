@@ -36,9 +36,18 @@ const Navbar = () => {
       modal.modalType === "sidebar-modal"
     ) {
       dispatch(closeModal());
+    }
+
+    if (isMobileSize && data.sideBarsOpen === "true") {
       dispatch(toggleSidebar());
     }
-  }, [isMobileSize, modal.modalIsOpen, modal.modalType, dispatch]);
+  }, [
+    isMobileSize,
+    modal.modalIsOpen,
+    modal.modalType,
+    data.sideBarsOpen,
+    dispatch,
+  ]);
 
   return (
     <NavbarContainer>
@@ -67,7 +76,6 @@ const Navbar = () => {
                     })
                   );
                 }
-                dispatch(toggleSidebar());
               }}
             >
               {modal.modalIsOpen && modal.modalType === "sidebar-modal" ? (

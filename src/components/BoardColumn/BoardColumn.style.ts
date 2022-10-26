@@ -5,9 +5,8 @@ import { themeType } from "../../types/themeTypes";
 export const Container = styled.section`
   display: flex;
   flex-direction: column;
-  min-width: 280px;
+  width: 280px;
   gap: 1.5rem;
-  width: 100%;
 `;
 
 export const ColumnName = styled.h4`

@@ -3,7 +3,8 @@ import { HeadingL, HeadingXL } from "../../shared/typography";
 import { themeType } from "../../types/themeTypes";
 
 export const NavbarContainer = styled.header`
-  position: absolute;
+  z-index: 3;
+  position: fixed;
   top: 0;
   left: 0;
   width: 100%;
