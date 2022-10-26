@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { themeType } from "./types/themeTypes";
 
-export const AppWrapper = styled.main`
+export const AppWrapper = styled.div`
   width: 100vw;
   min-height: 100vh;
   background-color: ${({ theme }: themeType) => theme.bodyBg};

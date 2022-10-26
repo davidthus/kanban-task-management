@@ -56,6 +56,8 @@ export const NavbarWrapper = styled.nav`
 export const BoardName = styled.h1`
   ${HeadingXL}
   color: ${({ theme }: themeType) => theme.textPrimary};
+  display: flex;
+  gap: 0.5rem;
 
   @media screen and (max-width: 800px) {
     font-size: 20px;
@@ -79,4 +81,16 @@ export const VerticalDotsWrapper = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+`;
+
+export const ArrowIconWrapper = styled.div`
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+`;
+
+export const TitleAndArrowWrapper = styled.div`
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 `;

@@ -1,15 +1,20 @@
-import React from "react";
-import { useAppSelector } from "../../app/hooks";
+import React, { useEffect } from "react";
+import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   AddTaskIcon,
+  ArrowDownIcon,
+  ArrowUpIcon,
   DarkLogoIcon,
   LightLogoIcon,
   MobileLogoIcon,
   VerticalDotsIcon,
 } from "../../assets";
+import { toggleSidebar } from "../../features/dataSlice";
+import { closeModal, openModal } from "../../features/modalSlice";
 import { useMatchMedia } from "../../hooks/useMatchMedia";
 import { AddTask } from "../../shared/buttons";
 import {
+  ArrowIconWrapper,
   BoardName,
   ButtonsWrapper,
   LogoWrapper,
@@ -18,17 +23,26 @@ import {
   VerticalDotsWrapper,
 } from "./Navbar.style";
 
-interface NavbarProps {
-  sidebarOpen: boolean;
-}
-
-const Navbar = ({ sidebarOpen }: NavbarProps) => {
+const Navbar = () => {
+  const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state);
+  const { modal } = useAppSelector((state) => state);
   const { isMobileSize } = useMatchMedia();
+
+  useEffect(() => {
+    if (
+      !isMobileSize &&
+      modal.modalIsOpen &&
+      modal.modalType === "sidebar-modal"
+    ) {
+      dispatch(closeModal());
+      dispatch(toggleSidebar());
+    }
+  }, [isMobileSize, modal.modalIsOpen, modal.modalType, dispatch]);
 
   return (
     <NavbarContainer>
-      <LogoWrapper sidebarOpen={sidebarOpen ? true : false}>
+      <LogoWrapper sidebarOpen={data.sideBarsOpen === "true" ? true : false}>
         {isMobileSize ? (
           <MobileLogoIcon />
         ) : data.theme === "dark" ? (
@@ -38,12 +52,37 @@ const Navbar = ({ sidebarOpen }: NavbarProps) => {
         )}
       </LogoWrapper>
       <NavbarWrapper>
-        <BoardName>{data.activeBoard}</BoardName>
+        <BoardName>
+          {data.activeBoard}
+          {isMobileSize && (
+            <ArrowIconWrapper
+              onClick={() => {
+                if (modal.modalIsOpen && modal.modalType === "sidebar-modal") {
+                  dispatch(closeModal());
+                } else {
+                  dispatch(
+                    openModal({
+                      modalType: "sidebar-modal",
+                      modalDetail: { title: "", status: "" },
+                    })
+                  );
+                }
+                dispatch(toggleSidebar());
+              }}
+            >
+              {modal.modalIsOpen && modal.modalType === "sidebar-modal" ? (
+                <ArrowUpIcon />
+              ) : (
+                <ArrowDownIcon />
+              )}
+            </ArrowIconWrapper>
+          )}
+        </BoardName>
         <ButtonsWrapper>
           <AddTask disabled>
             {isMobileSize ? <AddTaskIcon /> : "+ Add New Task"}
           </AddTask>
-          <VerticalDotsWrapper onClick={() => console.log("im clicked")}>
+          <VerticalDotsWrapper>
             <VerticalDotsIcon />
           </VerticalDotsWrapper>
         </ButtonsWrapper>

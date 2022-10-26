@@ -19,18 +19,24 @@ export const Wrapper = styled.div`
   padding: 1rem 0;
 `;
 
-export const ToggleWrapper = styled.div`
+export const ToggleWrapper = styled.button`
   width: 40px;
   height: 20px;
   background-color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
   border-radius: 99rem;
   position: relative;
+  transition: 0.5s;
+  outline: none;
+  border: 0;
   display: flex;
   align-items: center;
-  padding-inline: 3px;
+  padding-right: 3px;
+  padding-left: ${(props: any) => (props.lightModeOn ? "3px" : "23px")};
   cursor: pointer;
-  justify-content: ${(props: any) =>
-    props.lightModeOn ? "flex-start" : "flex-end"};
+
+  &:hover {
+    background-color: ${({ theme }: themeType) => theme.buttonPrimaryHover};
+  }
 `;
 
 export const Toggle = styled.div`

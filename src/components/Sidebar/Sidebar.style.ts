@@ -55,7 +55,7 @@ export const BoardTab = styled.li`
   align-items: center;
   gap: 0.5rem;
   padding: 1rem 2rem;
-  transition: 0.3s;
+  transition: background-color color 0.3s;
   border-bottom-right-radius: 99rem;
   border-top-right-radius: 99rem;
   cursor: pointer;
@@ -88,7 +88,6 @@ export const NewBoardButton = styled.button`
   ${itemSpacing}
   ${HeadingM}
   padding: 1rem 2rem;
-  transition: 0.3s;
   cursor: pointer;
   outline: none;
   border: none;
@@ -112,7 +111,6 @@ export const HideSidebarToggle = styled.button`
   border: none;
   width: 90%;
   padding: 1rem 2rem;
-  transition: 0.3s;
   border-bottom-right-radius: 99rem;
   border-top-right-radius: 99rem;
   cursor: pointer;

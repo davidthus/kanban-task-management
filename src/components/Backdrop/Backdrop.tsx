@@ -1,18 +1,23 @@
 import React from "react";
+import { useAppDispatch } from "../../app/hooks";
+import { closeModal } from "../../features/modalSlice";
 import { BackdropContainer } from "./Backdrop.style";
 
 interface BackdropProps {
   children: React.ReactNode;
-  handleClick: () => void;
+  sidebar?: boolean;
 }
 
-const Backdrop = ({ children, handleClick }: BackdropProps) => {
+const Backdrop = ({ children, sidebar }: BackdropProps) => {
+  const dispatch = useAppDispatch();
+
   return (
     <BackdropContainer
-      onClick={handleClick}
+      onClick={() => dispatch(closeModal())}
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
+      sidebar={sidebar ? true : false}
     >
       {children}
     </BackdropContainer>
