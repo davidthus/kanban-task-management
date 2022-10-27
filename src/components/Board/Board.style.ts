@@ -10,7 +10,7 @@ export const Container = styled.main`
 
 export const NewColumnButton = styled.button`
   ${HeadingXL}
-  outline: none;
+
   border: none;
   cursor: pointer;
   width: 280px;

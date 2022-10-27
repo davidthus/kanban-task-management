@@ -90,7 +90,7 @@ export const NewBoardButton = styled.button`
   ${HeadingM}
   padding: 1rem 2rem;
   cursor: pointer;
-  outline: none;
+
   border: none;
   background: transparent;
   color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
@@ -145,7 +145,7 @@ export const ShowSidebarToggle = styled.button`
   border-top-right-radius: 99rem;
   border-bottom-right-radius: 99rem;
   border: none;
-  outline: none;
+
   cursor: pointer;
 
   &:hover {

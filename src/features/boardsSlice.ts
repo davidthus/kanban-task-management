@@ -30,8 +30,26 @@ const boardsSlice = createSlice({
           subtaskIndex
         ].isCompleted;
     },
+
+    deleteTask: (state, action) => {
+      const { boardName, columnName, taskName } = action.payload;
+
+      const boardIndex = state.findIndex((board) => board.name === boardName);
+      const columnIndex = state[boardIndex].columns.findIndex(
+        (column) => column.name === columnName
+      );
+
+      state[boardIndex].columns[columnIndex].tasks = state[boardIndex].columns[
+        columnIndex
+      ].tasks.filter((task) => task.title !== taskName);
+    },
+
+    deleteBoard: (state, action) => {
+      const { boardName } = action.payload;
+      return state.filter((board) => board.name !== boardName);
+    },
   },
 });
 
-export const { toggleSubtask } = boardsSlice.actions;
+export const { toggleSubtask, deleteTask, deleteBoard } = boardsSlice.actions;
 export default boardsSlice.reducer;

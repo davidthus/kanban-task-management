@@ -34,7 +34,7 @@ export const CheckBox = styled.button`
   width: 16px;
   height: 16px;
   border-radius: 2px;
-  outline: none;
+
   border: 1px solid ${({ theme }: themeType) => theme.border};
   background-color: ${(props: SubtaskProps) =>
     props.completed ? props.theme.completedCheckBoxBg : props.theme.checkBoxBg};

@@ -26,7 +26,7 @@ export const ToggleWrapper = styled.button`
   border-radius: 99rem;
   position: relative;
   transition: 0.5s;
-  outline: none;
+
   border: 0;
   display: flex;
   align-items: center;

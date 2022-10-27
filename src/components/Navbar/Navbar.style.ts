@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { HeadingL, HeadingXL } from "../../shared/typography";
+import { BodyL, HeadingL, HeadingXL } from "../../shared/typography";
 import { themeType } from "../../types/themeTypes";
 
 export const NavbarContainer = styled.header`
@@ -82,6 +82,7 @@ export const VerticalDotsWrapper = styled.div`
   cursor: pointer;
   display: flex;
   align-items: center;
+  position: relative;
 `;
 
 export const ArrowIconWrapper = styled.div`
@@ -94,4 +95,30 @@ export const TitleAndArrowWrapper = styled.div`
   display: flex;
   align-items: center;
   gap: 0.5rem;
+`;
+
+export const Popout = styled.ul`
+  position: absolute;
+  border-radius: 8px;
+  padding: 1.5rem 1.5rem;
+  background: ${({ theme }: themeType) => theme.dropDownBg};
+  width: 192px;
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  top: 3rem;
+  right: 0;
+  list-style: none;
+`;
+
+export const EditButton = styled.li`
+  color: ${({ theme }: themeType) => theme.grey};
+  ${BodyL}
+  cursor: pointer;
+`;
+
+export const DeleteButton = styled.li`
+  color: ${({ theme }: themeType) => theme.red};
+  ${BodyL}
+  cursor: pointer;
 `;

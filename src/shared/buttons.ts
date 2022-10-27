@@ -21,10 +21,6 @@ export const PrimaryButtonL = styled(Button)`
   &:hover {
     background: ${({ theme }: themeType) => theme.buttonPrimaryHover};
   }
-
-  &:focus {
-    background: ${({ theme }: themeType) => theme.buttonPrimaryHover};
-  }
 `;
 
 export const PrimaryButtonS = styled(Button)`
@@ -33,10 +29,6 @@ export const PrimaryButtonS = styled(Button)`
   ${ButtonSText}
 
   &:hover {
-    background: ${({ theme }: themeType) => theme.buttonPrimaryHover};
-  }
-
-  &:focus {
     background: ${({ theme }: themeType) => theme.buttonPrimaryHover};
   }
 `;
@@ -49,10 +41,6 @@ export const ButtonSecondary = styled(Button)`
   &:hover {
     background: ${({ theme }: themeType) => theme.buttonSecondaryHover};
   }
-
-  &:focus {
-    background: ${({ theme }: themeType) => theme.buttonSecondaryHover};
-  }
 `;
 
 export const ButtonDestructive = styled(Button)`
@@ -61,10 +49,6 @@ export const ButtonDestructive = styled(Button)`
   ${ButtonSText}
 
   &:hover {
-    background: ${({ theme }: themeType) => theme.deleteButtonHover};
-  }
-
-  &:focus {
     background: ${({ theme }: themeType) => theme.deleteButtonHover};
   }
 `;

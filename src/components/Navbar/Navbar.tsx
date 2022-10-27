@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useAppDispatch, useAppSelector } from "../../app/hooks";
 import {
   AddTaskIcon,
@@ -9,6 +9,7 @@ import {
   MobileLogoIcon,
   VerticalDotsIcon,
 } from "../../assets";
+import { deleteBoard } from "../../features/boardsSlice";
 import { toggleSidebar } from "../../features/dataSlice";
 import { closeModal, openModal } from "../../features/modalSlice";
 import { useMatchMedia } from "../../hooks/useMatchMedia";
@@ -18,17 +19,20 @@ import {
   ArrowIconWrapper,
   BoardName,
   ButtonsWrapper,
+  DeleteButton,
+  EditButton,
   LogoWrapper,
   NavbarContainer,
   NavbarWrapper,
+  Popout,
   VerticalDotsWrapper,
 } from "./Navbar.style";
 
 const Navbar = () => {
   const dispatch = useAppDispatch();
-  const { data } = useAppSelector((state) => state);
-  const { boards } = useAppSelector((state) => state);
-  const { modal } = useAppSelector((state) => state);
+  const { data, modal, boards } = useAppSelector((state) => state);
+  const [popoutOpen, setPopoutOpen] = useState(false);
+
   const { isMobileSize } = useMatchMedia();
 
   useEffect(() => {
@@ -98,8 +102,29 @@ const Navbar = () => {
           >
             {isMobileSize ? <AddTaskIcon /> : "+ Add New Task"}
           </AddTask>
-          <VerticalDotsWrapper>
+          <VerticalDotsWrapper onClick={() => setPopoutOpen((prev) => !prev)}>
             <VerticalDotsIcon />
+            {popoutOpen && (
+              <Popout>
+                <EditButton>Edit Board</EditButton>
+                <DeleteButton
+                  onClick={() =>
+                    dispatch(
+                      openModal({
+                        modalType: "delete-board",
+                        modalDetail: {
+                          title: "",
+                          status: "",
+                          board: data.activeBoard,
+                        },
+                      })
+                    )
+                  }
+                >
+                  Delete Board
+                </DeleteButton>
+              </Popout>
+            )}
           </VerticalDotsWrapper>
         </ButtonsWrapper>
       </NavbarWrapper>

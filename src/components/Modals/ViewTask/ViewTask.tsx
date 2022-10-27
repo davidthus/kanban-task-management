@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { useAppSelector } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { VerticalDotsIcon } from "../../../assets";
+import { openModal } from "../../../features/modalSlice";
 import { findTask } from "../../../utils/findObject";
 import SubtasksCompleted from "../../../utils/subtasksCompleted";
 import Subtask from "../Subtask/Subtask";
@@ -19,6 +20,7 @@ import {
 } from "./ViewTask.style";
 
 function ViewTask() {
+  const dispatch = useAppDispatch();
   const [popoutOpen, setPopoutOpen] = useState(false);
   const state = useAppSelector((state) => state);
   const task = findTask({
@@ -35,7 +37,18 @@ function ViewTask() {
           {popoutOpen && (
             <Popout>
               <EditButton>Edit Task</EditButton>
-              <DeleteButton>Delete Task</DeleteButton>
+              <DeleteButton
+                onClick={() =>
+                  dispatch(
+                    openModal({
+                      modalDetail: state.modal.modalDetail,
+                      modalType: "delete-task",
+                    })
+                  )
+                }
+              >
+                Delete Task
+              </DeleteButton>
             </Popout>
           )}
         </VerticalDotsWrapper>

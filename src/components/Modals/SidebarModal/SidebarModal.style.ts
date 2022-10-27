@@ -81,7 +81,7 @@ export const NewBoardButton = styled.button`
   ${HeadingM}
   padding: 1rem 2rem;
   cursor: pointer;
-  outline: none;
+
   border: none;
   background: transparent;
   color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
