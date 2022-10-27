@@ -17,7 +17,7 @@ const Backdrop = ({ children, sidebar }: BackdropProps) => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}
-      sidebar={sidebar ? true : false}
+      sidebar={sidebar ? true : undefined}
     >
       {children}
     </BackdropContainer>

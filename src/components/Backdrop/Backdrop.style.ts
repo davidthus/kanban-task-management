@@ -8,7 +8,7 @@ interface BackdropContainerProps {
 }
 
 export const BackdropContainer = styled(motion.div)`
-  position: absolute;
+  position: fixed;
   left: 0;
   right: 0;
   bottom: 0;

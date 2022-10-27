@@ -21,4 +21,9 @@ export const NewColumnButton = styled.button`
   display: flex;
   align-items: center;
   justify-content: center;
+  transition: 0.3s;
+
+  &:hover {
+    color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
+  }
 `;

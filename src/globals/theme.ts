@@ -54,10 +54,11 @@ export const light = {
   scrollBg: "white",
   NewColumn:
     "linear-gradient(180deg, #E9EFFA 0%, rgba(233, 239, 250, 0.5) 100%)",
+  TaskBoxShadow: "box-shadow: 0px 4px 6px rgba(54, 78, 126, 0.101545)",
 
   // sub task checkbox
   subTaskCheckBoxBg: "#F4F7FD",
-  subTaskCheckBoxHover: "#979797",
+  subTaskCheckBoxHover: "#635FC725",
 
   checkBoxBg: "white",
   completedCheckBoxBg: "#635FC7",
@@ -104,11 +105,12 @@ export const dark = {
   taskBg: "#2B2C37",
   scrollBg: "#2B2C37",
   NewColumn:
-    "linear-gradient(to bottom,rgba(121,132,147,.2),rgba(130,143,163,.1),rgba(130,143,163,0))",
+    "linear-gradient(180deg, rgba(43, 44, 55, 0.25) 0%, rgba(43, 44, 55, 0.125) 100%)",
+  TaskBoxShadow: "filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25))",
 
   // sub task checkbox
   subTaskCheckBoxBg: "#20212C",
-  subTaskCheckBoxHover: "#635FC7",
+  subTaskCheckBoxHover: "#635FC725",
 
   checkBoxBg: "#2B2C37",
   completedCheckBoxBg: "#635FC7",

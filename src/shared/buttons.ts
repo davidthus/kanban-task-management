@@ -83,11 +83,4 @@ export const AddTask = styled(Button)`
         ? props.theme.buttonPrimaryBg
         : props.theme.buttonPrimaryHover};
   }
-
-  &:focus {
-    background: ${(props: any) =>
-      props.disabled
-        ? props.theme.buttonPrimaryBg
-        : props.theme.buttonPrimaryHover};
-  }
 `;

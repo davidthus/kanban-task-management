@@ -6,6 +6,7 @@ export interface themeType {
     taskBg: string;
     scrollBg: string;
     NewColumn: string;
+    TaskBoxShadow: string;
     subTaskCheckBoxBg: string;
     subTaskCheckBoxHover: string;
     checkBoxBg: string;
@@ -43,6 +44,7 @@ export interface themeObject {
   taskBg: string;
   scrollBg: string;
   NewColumn: string;
+  TaskBoxShadow: string;
   subTaskCheckBoxBg: string;
   subTaskCheckBoxHover: string;
   checkBoxBg: string;

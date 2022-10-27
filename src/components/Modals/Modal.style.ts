@@ -6,7 +6,7 @@ export const ModalWrapper = styled(motion.section)`
   padding: 2rem;
   border-radius: 6px;
   display: flex;
-  min-width: 300px;
+  width: 480px;
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }: themeType) => theme.asideBg};

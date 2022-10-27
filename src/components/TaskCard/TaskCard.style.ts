@@ -11,6 +11,7 @@ export const TaskCardContainer = styled.article`
   display: flex;
   flex-direction: column;
   gap: 0.5rem;
+  ${({ theme }: themeType) => theme.TaskBoxShadow};
 `;
 
 export const TaskHeading = styled.h5`

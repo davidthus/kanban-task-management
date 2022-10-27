@@ -13,6 +13,7 @@ import { toggleSidebar } from "../../features/dataSlice";
 import { closeModal, openModal } from "../../features/modalSlice";
 import { useMatchMedia } from "../../hooks/useMatchMedia";
 import { AddTask } from "../../shared/buttons";
+import { appBoard } from "../../types/boardTypes";
 import {
   ArrowIconWrapper,
   BoardName,
@@ -26,6 +27,7 @@ import {
 const Navbar = () => {
   const dispatch = useAppDispatch();
   const { data } = useAppSelector((state) => state);
+  const { boards } = useAppSelector((state) => state);
   const { modal } = useAppSelector((state) => state);
   const { isMobileSize } = useMatchMedia();
 
@@ -48,6 +50,10 @@ const Navbar = () => {
     data.sideBarsOpen,
     dispatch,
   ]);
+
+  const currentActiveBoard = boards.filter(
+    (board: appBoard) => board.name === data.activeBoard
+  )[0];
 
   return (
     <NavbarContainer>
@@ -87,7 +93,9 @@ const Navbar = () => {
           )}
         </BoardName>
         <ButtonsWrapper>
-          <AddTask disabled>
+          <AddTask
+            disabled={currentActiveBoard.columns.length === 0 ? true : false}
+          >
             {isMobileSize ? <AddTaskIcon /> : "+ Add New Task"}
           </AddTask>
           <VerticalDotsWrapper>
