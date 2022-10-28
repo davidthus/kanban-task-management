@@ -66,7 +66,7 @@ export const SubtasksContainer = styled.div`
   gap: 1rem;
 `;
 
-export const NumOfSubtasks = styled.h6`
+export const Subheading = styled.h6`
   ${BodyM}
   color: ${({ theme }: themeType) => theme.textPrimary};
 `;
@@ -77,4 +77,11 @@ export const SubtasksWrapper = styled.ul`
   flex-direction: column;
   gap: 0.5rem;
   list-style: none;
+`;
+
+export const SelectWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
 `;

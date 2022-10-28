@@ -48,8 +48,33 @@ const boardsSlice = createSlice({
       const { boardName } = action.payload;
       return state.filter((board) => board.name !== boardName);
     },
+    changeTaskStatus: (state, action) => {
+      const { taskName, columnName, boardName, newColumnName } = action.payload;
+      const boardIndex = state.findIndex((board) => board.name === boardName);
+      const columnIndex = state[boardIndex].columns.findIndex(
+        (column) => column.name === columnName
+      );
+      const taskToMove = state[boardIndex].columns[columnIndex].tasks.find(
+        (task) => task.title === taskName
+      );
+      const newColumnIndex = state[boardIndex].columns.findIndex(
+        (column) => column.name === newColumnName
+      );
+
+      if (taskToMove) {
+        state[boardIndex].columns[columnIndex].tasks = state[
+          boardIndex
+        ].columns[columnIndex].tasks.filter((task) => task.title !== taskName);
+
+        state[boardIndex].columns[newColumnIndex].tasks.push({
+          ...taskToMove,
+          status: state[boardIndex].columns[newColumnIndex].name,
+        });
+      }
+    },
   },
 });
 
-export const { toggleSubtask, deleteTask, deleteBoard } = boardsSlice.actions;
+export const { toggleSubtask, deleteTask, deleteBoard, changeTaskStatus } =
+  boardsSlice.actions;
 export default boardsSlice.reducer;
