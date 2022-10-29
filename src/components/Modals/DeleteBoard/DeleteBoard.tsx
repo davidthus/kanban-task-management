@@ -24,10 +24,24 @@ function DeleteBoard() {
       </Message>
       <ButtonsWrapper>
         <ButtonDestructive
+          disabled={boards.length === 1 ? true : false}
           onClick={() => {
-            dispatch(deleteBoard(dispatchPayload));
-            dispatch(toggleActiveBoard({ board: boards[0].name }));
-            dispatch(closeModal());
+            if (boards.length === 1) {
+              return;
+            } else {
+              if (
+                boards.findIndex(
+                  (board) => board.name === modalDetail.board
+                ) === 0
+              ) {
+                dispatch(toggleActiveBoard({ board: boards[1].name }));
+              } else {
+                dispatch(toggleActiveBoard({ board: boards[0].name }));
+              }
+
+              dispatch(deleteBoard(dispatchPayload));
+              dispatch(closeModal());
+            }
           }}
         >
           Delete

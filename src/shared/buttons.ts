@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { themeType } from "../types/themeTypes";
+import { themeObject, themeType } from "../types/themeTypes";
 import { ButtonSText, HeadingM } from "./typography";
 
 const Button = styled.button`
@@ -47,9 +47,17 @@ export const ButtonDestructive = styled(Button)`
   color: ${({ theme }: themeType) => theme.deleteButtonText};
   background: ${({ theme }: themeType) => theme.deleteButtonBg};
   ${ButtonSText}
+  cursor: ${(props: any) => (props.disabled ? "auto" : "pointer")};
+  opacity: ${(props: any) => (props.disabled ? "0.5" : "1")};
 
   &:hover {
-    background: ${({ theme }: themeType) => theme.deleteButtonHover};
+    background: ${({
+      theme,
+      disabled,
+    }: {
+      theme: themeObject;
+      disabled: boolean;
+    }) => (disabled ? theme.deleteButtonBg : theme.deleteButtonHover)};
   }
 `;
 

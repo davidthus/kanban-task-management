@@ -69,7 +69,7 @@ function ViewTask() {
   const customStyles = {
     control: (styles: any, state: any) => ({
       ...styles,
-      border: `1px solid ${theme.dropDownBorder}`,
+      border: `1px solid ${theme.buttonPrimaryBg}`,
       backgroundColor: theme.taskBg,
       outline: "0px solid",
       cursor: "pointer",
