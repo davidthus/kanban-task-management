@@ -83,6 +83,9 @@ const boardsSlice = createSlice({
         subtasks,
       });
     },
+    addBoard: (state, action) => {
+      state.push(action.payload);
+    },
   },
 });
 
@@ -92,5 +95,6 @@ export const {
   deleteBoard,
   changeTaskStatus,
   addTask,
+  addBoard,
 } = boardsSlice.actions;
 export default boardsSlice.reducer;

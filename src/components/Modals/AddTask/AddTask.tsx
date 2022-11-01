@@ -14,7 +14,7 @@ import {
   Textarea,
   Title,
 } from "../../../shared/modals";
-import FormSubtask from "../../FormSubtask/FormSubtask";
+import FormFieldArray from "../../FormFieldArray/FormFieldArray";
 import { Section, SubtasksContainer, Wrapper } from "./AddTask.style";
 
 function AddTask() {
@@ -153,7 +153,7 @@ recharge the batteries a little."
         <Subheading>Subtasks</Subheading>
         <SubtasksContainer>
           {fields.map((field, index) => (
-            <FormSubtask
+            <FormFieldArray
               fields={fields}
               key={field.id}
               remove={remove}
@@ -161,6 +161,7 @@ recharge the batteries a little."
               index={index}
               field={field}
               error={errors.subtasks && errors?.subtasks[index]?.value}
+              subtask
             />
           ))}
         </SubtasksContainer>

@@ -1,8 +1,8 @@
 import React from "react";
 import { ErrorText, FieldWrapper, Input } from "../../shared/modals";
-import { CrossIcon, CrossWrapper, Wrapper } from "./FormSubtask.style";
+import { CrossIcon, CrossWrapper, Wrapper } from "./FormFieldArray.style";
 
-interface FormSubtaskProps {
+interface FormFieldArrayProps {
   field: object & { id: string };
   remove: (index?: number | number[]) => void;
   register: (
@@ -12,33 +12,46 @@ interface FormSubtaskProps {
   index: number;
   fields: object & { id: string }[];
   error: any;
+  subtask?: boolean;
 }
 
-function FormSubtask({
+function FormFieldArray({
   error,
   field,
   index,
   register,
   remove,
   fields,
-}: FormSubtaskProps) {
+  subtask,
+}: FormFieldArrayProps) {
   let placeholder = "";
-  if (index === 0) placeholder = "e.g. Make a coffee";
-  if (index === 1) placeholder = "e.g. Drink coffee & smile";
-
-  console.log(error);
+  if (subtask) {
+    if (index === 0) placeholder = "e.g. Make a coffee";
+    if (index === 1) placeholder = "e.g. Drink coffee & smile";
+  }
 
   return (
     <Wrapper>
       <FieldWrapper>
-        <Input
-          error={error?.message && true}
-          placeholder={placeholder}
-          key={field.id}
-          {...register(`subtasks.${index}.value` as const, {
-            required: "Can't be empty",
-          })}
-        />
+        {subtask ? (
+          <Input
+            error={error?.message && true}
+            placeholder={placeholder}
+            key={field.id}
+            {...register(`subtasks.${index}.value` as const, {
+              required: "Can't be empty",
+            })}
+          />
+        ) : (
+          <Input
+            error={error?.message && true}
+            placeholder={placeholder}
+            key={field.id}
+            {...register(`columns.${index}.name` as const, {
+              required: "Can't be empty",
+            })}
+          />
+        )}
         {error?.message && <ErrorText>{error.message}</ErrorText>}
       </FieldWrapper>
       <CrossWrapper
@@ -64,4 +77,4 @@ function FormSubtask({
   );
 }
 
-export default FormSubtask;
+export default FormFieldArray;
