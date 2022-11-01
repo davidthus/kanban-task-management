@@ -10,7 +10,7 @@ function DeleteTask() {
   const dispatch = useAppDispatch();
 
   const dispatchPayload = {
-    taskName: modalDetail.title,
+    taskIndex: modalDetail.index,
     columnName: modalDetail.status,
     boardName: modalDetail.board,
   };

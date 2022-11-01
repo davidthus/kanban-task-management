@@ -7,9 +7,10 @@ import { CheckBox, Container, SubtaskTitle } from "./Subtask.style";
 
 interface SubtaskProps {
   subtask: taskSubtask;
+  index: number;
 }
 
-function Subtask({ subtask }: SubtaskProps) {
+function Subtask({ subtask, index }: SubtaskProps) {
   const dispatch = useAppDispatch();
   const { title, status, board } = useAppSelector(
     (state) => state.modal.modalDetail
@@ -19,7 +20,7 @@ function Subtask({ subtask }: SubtaskProps) {
     boardName: board,
     columnName: status,
     taskName: title,
-    subtaskName: subtask.title,
+    subtaskIndex: index,
   };
 
   return (

@@ -26,7 +26,7 @@ export const HeadingS = css`
 `;
 
 export const BodyL = css`
-  font-weight: medium;
+  font-weight: 500;
   font-size: 13px;
   line-height: 23px;
 `;

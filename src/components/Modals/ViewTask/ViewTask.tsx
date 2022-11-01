@@ -5,6 +5,7 @@ import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { VerticalDotsIcon } from "../../../assets";
 import { changeTaskStatus } from "../../../features/boardsSlice";
 import { changeModalsDetail, openModal } from "../../../features/modalSlice";
+import { Subheading, Title } from "../../../shared/modals";
 import { themeObject } from "../../../types/themeTypes";
 import { findTask } from "../../../utils/findObject";
 import SubtasksCompleted from "../../../utils/subtasksCompleted";
@@ -15,10 +16,8 @@ import {
   EditButton,
   Popout,
   SelectWrapper,
-  Subheading,
   SubtasksContainer,
   SubtasksWrapper,
-  TaskTitle,
   TopWrapper,
   VerticalDotsWrapper,
   Wrapper,
@@ -52,7 +51,7 @@ function ViewTask() {
         changeTaskStatus({
           boardName: state.modal.modalDetail.board,
           columnName: state.modal.modalDetail.status,
-          taskName: state.modal.modalDetail.title,
+          taskIndex: state.modal.modalDetail.index,
           newColumnName: selectedOption.value,
         })
       );
@@ -61,6 +60,7 @@ function ViewTask() {
           board: state.modal.modalDetail.board,
           status: selectedOption.value,
           title: state.modal.modalDetail.title,
+          index: state.modal.modalDetail.index,
         })
       );
     }
@@ -69,7 +69,7 @@ function ViewTask() {
   const customStyles = {
     control: (styles: any, state: any) => ({
       ...styles,
-      border: `1px solid ${theme.buttonPrimaryBg}`,
+      border: `1px solid ${theme.dropDownBorder}`,
       backgroundColor: theme.taskBg,
       outline: "0px solid",
       cursor: "pointer",
@@ -89,17 +89,25 @@ function ViewTask() {
     singleValue: (styles: any) => ({
       color: theme.textPrimary,
       fontFamily: "Plus Jakarta Sans,sans-serif",
-      fontWeight: "medium",
-      fontSize: " 13px",
+      fontWeight: "500",
+      fontSize: "13px",
       lineHeight: "23px",
     }),
+    placeholder: (styles: any) => ({
+      color: theme.grey,
+      fontFamily: "Plus Jakarta Sans,sans-serif",
+      fontWeight: "500",
+      fontSize: "13px",
+      lineHeight: "23px",
+    }),
+
     option: (styles: any) => ({
       ...styles,
       backgroundColor: theme.dropDownBg,
       color: theme.grey,
       cursor: "pointer",
       fontFamily: "Plus Jakarta Sans,sans-serif",
-      fontWeight: "medium",
+      fontWeight: "500",
       fontSize: " 13px",
       lineHeight: "23px",
       padding: ".4rem .7rem",
@@ -114,7 +122,7 @@ function ViewTask() {
       {task && (
         <>
           <TopWrapper>
-            <TaskTitle>{task.title}</TaskTitle>
+            <Title>{task.title}</Title>
             <VerticalDotsWrapper onClick={() => setPopoutOpen((prev) => !prev)}>
               <VerticalDotsIcon />
               {popoutOpen && (
@@ -148,7 +156,7 @@ function ViewTask() {
             </Subheading>
             <SubtasksWrapper>
               {task.subtasks.map((subtask, i) => (
-                <Subtask key={i} subtask={subtask} />
+                <Subtask key={i} index={i} subtask={subtask} />
               ))}
             </SubtasksWrapper>
           </SubtasksContainer>
@@ -160,6 +168,7 @@ function ViewTask() {
               options={dropdownOptions}
               onChange={handleChange}
               styles={customStyles}
+              defaultValue={{ value: task?.status, label: task?.status }}
             />
           </SelectWrapper>
         </>

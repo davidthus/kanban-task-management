@@ -9,11 +9,6 @@ export const Wrapper = styled.div`
   gap: 2rem;
 `;
 
-export const TaskTitle = styled.h5`
-  ${HeadingL}
-  color: ${({ theme }: themeType) => theme.textPrimary};
-`;
-
 export const TopWrapper = styled.div`
   width: 100%;
   gap: 2.5rem;
@@ -64,11 +59,6 @@ export const SubtasksContainer = styled.div`
   flex-direction: column;
   width: 100%;
   gap: 1rem;
-`;
-
-export const Subheading = styled.h6`
-  ${BodyM}
-  color: ${({ theme }: themeType) => theme.textPrimary};
 `;
 
 export const SubtasksWrapper = styled.ul`

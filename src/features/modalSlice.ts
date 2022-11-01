@@ -1,6 +1,17 @@
 import { createSlice } from "@reduxjs/toolkit";
 
-const initialState = {
+interface initialStateShape {
+  modalType: string;
+  modalDetail: {
+    title: string;
+    status: string;
+    board: string;
+    index?: number;
+  };
+  modalIsOpen: boolean;
+}
+
+const initialState: initialStateShape = {
   modalType: "",
   modalDetail: {
     title: "",

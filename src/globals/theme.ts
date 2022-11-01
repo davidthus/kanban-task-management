@@ -1,4 +1,5 @@
 import { createGlobalStyle } from "styled-components";
+import { BodyL } from "../shared/typography";
 import { themeType } from "../types/themeTypes";
 
 export const GlobalStyle = createGlobalStyle`
@@ -28,6 +29,16 @@ export const GlobalStyle = createGlobalStyle`
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+input, textarea {
+  ${BodyL}
+  border: 1px solid #828FA325;
+  background-color:  ${({ theme }: themeType) => theme.taskBg};
+  padding: 0.5rem 1rem;
+  color: ${({ theme }: themeType) => theme.textPrimary};
+  border-radius: 4px;
+  outline: none;
 }
 
 ::-webkit-scrollbar-track {
@@ -67,7 +78,7 @@ export const light = {
   textFieldError: "#EA5555",
 
   // drop down
-  dropDownBorder: "#828FA3",
+  dropDownBorder: "#828FA325",
   dropDownActive: "#635FC7",
   dropDownBg: "white",
   dropDownIdle: "#828FA3",
@@ -90,7 +101,7 @@ export const light = {
 
   //shared
   border: "rgba(0, 0, 0, 0.15)",
-  grey: "#828fa3",
+  grey: "#828FA3",
   blue: "#635FC7",
   lightBlue: "#A8A4FF",
   red: "#EA5555",
@@ -119,7 +130,7 @@ export const dark = {
   textFieldError: "#EA5555",
   // drop down
   dropDownIdle: "#828FA3",
-  dropDownBorder: "#828FA3",
+  dropDownBorder: "#828FA325",
   dropDownActive: "#635FC7",
   dropDownBg: "#20212C",
 
@@ -141,7 +152,7 @@ export const dark = {
   // shared
 
   border: "#3E3F4E",
-  grey: "#828fa3",
+  grey: "#828FA3",
   blue: "#635FC7",
   lightBlue: "#A8A4FF",
   red: "#EA5555",

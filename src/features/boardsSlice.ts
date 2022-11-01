@@ -10,7 +10,7 @@ const boardsSlice = createSlice({
   initialState,
   reducers: {
     toggleSubtask: (state, action) => {
-      const { boardName, columnName, taskName, subtaskName } = action.payload;
+      const { boardName, columnName, taskName, subtaskIndex } = action.payload;
 
       const boardIndex = state.findIndex((board) => board.name === boardName);
       const columnIndex = state[boardIndex].columns.findIndex(
@@ -19,9 +19,6 @@ const boardsSlice = createSlice({
       const taskIndex = state[boardIndex].columns[columnIndex].tasks.findIndex(
         (task) => task.title === taskName
       );
-      const subtaskIndex = state[boardIndex].columns[columnIndex].tasks[
-        taskIndex
-      ].subtasks.findIndex((subtask) => subtask.title === subtaskName);
 
       state[boardIndex].columns[columnIndex].tasks[taskIndex].subtasks[
         subtaskIndex
@@ -32,16 +29,14 @@ const boardsSlice = createSlice({
     },
 
     deleteTask: (state, action) => {
-      const { boardName, columnName, taskName } = action.payload;
+      const { boardName, columnName, taskIndex } = action.payload;
 
       const boardIndex = state.findIndex((board) => board.name === boardName);
       const columnIndex = state[boardIndex].columns.findIndex(
         (column) => column.name === columnName
       );
 
-      state[boardIndex].columns[columnIndex].tasks = state[boardIndex].columns[
-        columnIndex
-      ].tasks.filter((task) => task.title !== taskName);
+      state[boardIndex].columns[columnIndex].tasks.splice(taskIndex, 1);
     },
 
     deleteBoard: (state, action) => {
@@ -49,14 +44,14 @@ const boardsSlice = createSlice({
       return state.filter((board) => board.name !== boardName);
     },
     changeTaskStatus: (state, action) => {
-      const { taskName, columnName, boardName, newColumnName } = action.payload;
+      const { taskIndex, columnName, boardName, newColumnName } =
+        action.payload;
       const boardIndex = state.findIndex((board) => board.name === boardName);
       const columnIndex = state[boardIndex].columns.findIndex(
         (column) => column.name === columnName
       );
-      const taskToMove = state[boardIndex].columns[columnIndex].tasks.find(
-        (task) => task.title === taskName
-      );
+      const taskToMove =
+        state[boardIndex].columns[columnIndex].tasks[taskIndex];
       const newColumnIndex = state[boardIndex].columns.findIndex(
         (column) => column.name === newColumnName
       );
@@ -64,7 +59,7 @@ const boardsSlice = createSlice({
       if (taskToMove) {
         state[boardIndex].columns[columnIndex].tasks = state[
           boardIndex
-        ].columns[columnIndex].tasks.filter((task) => task.title !== taskName);
+        ].columns[columnIndex].tasks.splice(taskIndex, 1);
 
         state[boardIndex].columns[newColumnIndex].tasks.push({
           ...taskToMove,
@@ -72,9 +67,33 @@ const boardsSlice = createSlice({
         });
       }
     },
+    addTask: (state, action) => {
+      const {
+        boardName,
+        columnName,
+        task: { title, description, subtasks },
+      } = action.payload;
+
+      const boardIndex = state.findIndex((board) => board.name === boardName);
+      const columnIndex = state[boardIndex].columns.findIndex(
+        (column) => column.name === columnName
+      );
+
+      state[boardIndex].columns[columnIndex].tasks.push({
+        title,
+        description,
+        status: columnName,
+        subtasks,
+      });
+    },
   },
 });
 
-export const { toggleSubtask, deleteTask, deleteBoard, changeTaskStatus } =
-  boardsSlice.actions;
+export const {
+  toggleSubtask,
+  deleteTask,
+  deleteBoard,
+  changeTaskStatus,
+  addTask,
+} = boardsSlice.actions;
 export default boardsSlice.reducer;

@@ -29,6 +29,7 @@ function BoardColumn({ column, index }: BoardColumnProps) {
           column={column}
           title={task.title}
           subtasks={task.subtasks}
+          index={i}
         />
       ))}
     </Container>

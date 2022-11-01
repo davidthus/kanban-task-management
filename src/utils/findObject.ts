@@ -4,6 +4,7 @@ interface modalDetail {
   title: string;
   status: string;
   board: string;
+  index?: number;
 }
 
 interface findTaskProps {
@@ -15,7 +16,11 @@ export function findTask({ modalDetail, boards }: findTaskProps) {
   const board = boards.find((board) => board.name === modalDetail.board);
   const column =
     board && board.columns.find((column) => column.name === modalDetail.status);
-  return column?.tasks.find((task) => task.title === modalDetail.title);
+  if (modalDetail.index) {
+    return column?.tasks[modalDetail.index];
+  } else {
+    return column?.tasks.find((task) => task.title === modalDetail.title);
+  }
 }
 
 export function findColumn({ modalDetail, boards }: findTaskProps) {

@@ -137,7 +137,7 @@ export const ShowSidebarToggle = styled.button`
   align-items: center;
   justify-content: center;
   background-color: ${({ theme }: themeType) => theme.buttonPrimaryBg};
-  position: absolute;
+  position: fixed;
   left: 0;
   bottom: 4vh;
   width: 56px;

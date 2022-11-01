@@ -13,9 +13,10 @@ interface TaskCardProps {
   title: string;
   subtasks: taskSubtask[];
   column: boardColumn;
+  index: number;
 }
 
-function TaskCard({ title, subtasks, column }: TaskCardProps) {
+function TaskCard({ title, subtasks, column, index }: TaskCardProps) {
   const { activeBoard } = useAppSelector((state) => state.data);
   const dispatch = useAppDispatch();
 
@@ -30,6 +31,7 @@ function TaskCard({ title, subtasks, column }: TaskCardProps) {
                 title: title,
                 status: column.name,
                 board: activeBoard,
+                index: index,
               },
             })
           )

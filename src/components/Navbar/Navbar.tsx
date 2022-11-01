@@ -9,7 +9,6 @@ import {
   MobileLogoIcon,
   VerticalDotsIcon,
 } from "../../assets";
-import { deleteBoard } from "../../features/boardsSlice";
 import { toggleSidebar } from "../../features/dataSlice";
 import { closeModal, openModal } from "../../features/modalSlice";
 import { useMatchMedia } from "../../hooks/useMatchMedia";
@@ -99,6 +98,14 @@ const Navbar = () => {
         <ButtonsWrapper>
           <AddTask
             disabled={currentActiveBoard.columns.length === 0 ? true : false}
+            onClick={() =>
+              dispatch(
+                openModal({
+                  modalType: "add-task",
+                  modalDetail: { title: "", status: "", board: "" },
+                })
+              )
+            }
           >
             {isMobileSize ? <AddTaskIcon /> : "+ Add New Task"}
           </AddTask>

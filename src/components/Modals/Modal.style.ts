@@ -7,6 +7,8 @@ export const ModalWrapper = styled(motion.section)`
   border-radius: 6px;
   display: flex;
   width: 480px;
+  max-height: 80vh;
+  overflow-y: scroll;
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }: themeType) => theme.asideBg};
