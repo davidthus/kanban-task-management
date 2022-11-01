@@ -7,7 +7,7 @@ import { changeTaskStatus } from "../../../features/boardsSlice";
 import { changeModalsDetail, openModal } from "../../../features/modalSlice";
 import { Subheading, Title } from "../../../shared/modals";
 import { themeObject } from "../../../types/themeTypes";
-import { findTask } from "../../../utils/findObject";
+import { findColumn, findTask } from "../../../utils/findObject";
 import SubtasksCompleted from "../../../utils/subtasksCompleted";
 import Subtask from "../Subtask/Subtask";
 import {
@@ -33,6 +33,8 @@ function ViewTask() {
   });
   const theme: themeObject = useTheme();
 
+  console.log(task);
+
   const indexOfActiveBoard = state.boards.findIndex(
     (board) => board.name === state.data.activeBoard
   );
@@ -44,6 +46,10 @@ function ViewTask() {
   );
 
   function handleChange(selectedOption: any) {
+    const column = findColumn({
+      modalDetail: { ...state.modal.modalDetail, status: selectedOption.value },
+      boards: state.boards,
+    });
     if (selectedOption.value === task?.status) {
       return;
     } else {
@@ -60,7 +66,7 @@ function ViewTask() {
           board: state.modal.modalDetail.board,
           status: selectedOption.value,
           title: state.modal.modalDetail.title,
-          index: state.modal.modalDetail.index,
+          index: column?.tasks.length,
         })
       );
     }

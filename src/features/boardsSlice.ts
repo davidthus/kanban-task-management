@@ -57,10 +57,7 @@ const boardsSlice = createSlice({
       );
 
       if (taskToMove) {
-        state[boardIndex].columns[columnIndex].tasks = state[
-          boardIndex
-        ].columns[columnIndex].tasks.splice(taskIndex, 1);
-
+        state[boardIndex].columns[columnIndex].tasks.splice(taskIndex, 1);
         state[boardIndex].columns[newColumnIndex].tasks.push({
           ...taskToMove,
           status: state[boardIndex].columns[newColumnIndex].name,
