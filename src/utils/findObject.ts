@@ -1,8 +1,8 @@
 import { appBoard } from "../types/boardTypes";
 
 interface modalDetail {
-  title: string;
-  status: string;
+  title?: string;
+  status?: string;
   board: string;
   index?: number;
 }

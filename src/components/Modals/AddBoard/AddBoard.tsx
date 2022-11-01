@@ -1,6 +1,6 @@
 import React from "react";
 import { useFieldArray, useForm } from "react-hook-form";
-import { useAppDispatch } from "../../../app/hooks";
+import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { addBoard } from "../../../features/boardsSlice";
 import { toggleActiveBoard } from "../../../features/dataSlice";
 import { closeModal } from "../../../features/modalSlice";
@@ -16,6 +16,7 @@ import FormFieldArray from "../../FormFieldArray/FormFieldArray";
 import { ColumnsContainer, Section, Wrapper } from "./AddBoard.style";
 
 function AddBoard() {
+  const { boards } = useAppSelector((state) => state);
   const dispatch = useAppDispatch();
   const {
     control,
@@ -54,11 +55,27 @@ function AddBoard() {
         <Subheading>Name</Subheading>
         <FieldWrapper>
           <Input
-            error={errors.name?.message ? true : false}
-            {...register("name", { required: "Can't be empty" })}
+            error={
+              errors.name?.message || errors.name?.type === "validate"
+                ? true
+                : false
+            }
+            {...register("name", {
+              required: "Can't be empty",
+              validate: (value) => {
+                return !boards.some(
+                  (board) => board.name.toLowerCase() === value.toLowerCase()
+                );
+              },
+            })}
             placeholder="e.g. Web Design"
           />
-          {errors.name?.message && <ErrorText>{errors.name.message}</ErrorText>}
+          {errors.name && errors.name.type === "required" && (
+            <ErrorText>{errors.name.message}</ErrorText>
+          )}
+          {errors.name && errors.name.type === "validate" && (
+            <ErrorText>Already Used</ErrorText>
+          )}
         </FieldWrapper>
       </Section>
       <Section>
@@ -77,10 +94,10 @@ function AddBoard() {
           ))}
         </ColumnsContainer>
         <ButtonSecondary onClick={() => append({ name: "", tasks: [] })}>
-          + Add New Subtask
+          + Add New Column
         </ButtonSecondary>
       </Section>
-      <PrimaryButtonS type="submit">Create Task</PrimaryButtonS>
+      <PrimaryButtonS type="submit">Create New Board</PrimaryButtonS>
     </Wrapper>
   );
 }

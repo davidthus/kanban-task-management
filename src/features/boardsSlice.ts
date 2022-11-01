@@ -86,6 +86,14 @@ const boardsSlice = createSlice({
     addBoard: (state, action) => {
       state.push(action.payload);
     },
+    editBoard: (state, action) => {
+      const { newBoard, activeBoard } = action.payload;
+      const indexOfBoard = state.findIndex(
+        (board) => board.name === activeBoard
+      );
+
+      state.splice(indexOfBoard, 1, newBoard);
+    },
   },
 });
 
@@ -96,5 +104,6 @@ export const {
   changeTaskStatus,
   addTask,
   addBoard,
+  editBoard,
 } = boardsSlice.actions;
 export default boardsSlice.reducer;

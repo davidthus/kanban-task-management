@@ -113,7 +113,22 @@ const Navbar = () => {
             <VerticalDotsIcon />
             {popoutOpen && (
               <Popout>
-                <EditButton>Edit Board</EditButton>
+                <EditButton
+                  onClick={() =>
+                    dispatch(
+                      openModal({
+                        modalType: "edit-board",
+                        modalDetail: {
+                          title: "",
+                          status: "",
+                          board: data.activeBoard,
+                        },
+                      })
+                    )
+                  }
+                >
+                  Edit Board
+                </EditButton>
                 <DeleteButton
                   onClick={() =>
                     dispatch(
