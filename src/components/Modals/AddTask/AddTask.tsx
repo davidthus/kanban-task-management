@@ -34,7 +34,10 @@ function AddTask() {
         value: currentBoard?.columns[0].name,
         label: currentBoard?.columns[0].name,
       },
-      subtasks: [{ value: "" }, { value: "" }],
+      subtasks: [
+        { title: "", isCompleted: false },
+        { title: "", isCompleted: false },
+      ],
     },
   });
   const { fields, append, remove } = useFieldArray({
@@ -104,22 +107,17 @@ function AddTask() {
     title: string;
     description: string;
     status: { value: string | undefined; label: string | undefined };
-    subtasks: { value: string }[];
+    subtasks: { title: string; isCompleted: boolean }[];
   }
 
   const onSubmit = handleSubmit((formData: onSubmitProps) => {
     const { title, description, status, subtasks } = formData;
 
-    const subtasksArray = subtasks.map((subtask) => ({
-      title: subtask.value,
-      isCompleted: false,
-    }));
-
     dispatch(
       addTask({
         boardName: data.activeBoard,
         columnName: status.value,
-        task: { title, description, subtasks: subtasksArray },
+        task: { title, description, subtasks },
       })
     );
     dispatch(closeModal());
@@ -160,12 +158,14 @@ recharge the batteries a little."
               register={register}
               index={index}
               field={field}
-              error={errors.subtasks && errors?.subtasks[index]?.value}
+              error={errors.subtasks && errors?.subtasks[index]?.title}
               subtask
             />
           ))}
         </SubtasksContainer>
-        <ButtonSecondary onClick={() => append({ value: "" })}>
+        <ButtonSecondary
+          onClick={() => append({ title: "", isCompleted: false })}
+        >
           + Add New Subtask
         </ButtonSecondary>
       </Section>

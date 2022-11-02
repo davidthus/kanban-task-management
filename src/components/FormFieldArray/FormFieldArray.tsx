@@ -38,7 +38,7 @@ function FormFieldArray({
             error={error?.message && true}
             placeholder={placeholder}
             key={field.id}
-            {...register(`subtasks.${index}.value` as const, {
+            {...register(`subtasks.${index}.title` as const, {
               required: "Can't be empty",
             })}
           />

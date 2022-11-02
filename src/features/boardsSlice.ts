@@ -94,6 +94,24 @@ const boardsSlice = createSlice({
 
       state.splice(indexOfBoard, 1, newBoard);
     },
+    editTask: (state, action) => {
+      const { oldColumnName, boardName, columnName, index, task } =
+        action.payload;
+      const indexOfBoard = state.findIndex((board) => board.name === boardName);
+      const indexOfColumn = state[indexOfBoard].columns.findIndex(
+        (column) => column.name === columnName
+      );
+      const indexOfOldColumn = state[indexOfBoard].columns.findIndex(
+        (column) => column.name === oldColumnName
+      );
+
+      if (oldColumnName === task.status) {
+        state[indexOfBoard].columns[indexOfColumn].tasks.splice(index, 1, task);
+      } else {
+        state[indexOfBoard].columns[indexOfOldColumn].tasks.splice(index, 1);
+        state[indexOfBoard].columns[indexOfColumn].tasks.push(task);
+      }
+    },
   },
 });
 
@@ -105,5 +123,6 @@ export const {
   addTask,
   addBoard,
   editBoard,
+  editTask,
 } = boardsSlice.actions;
 export default boardsSlice.reducer;

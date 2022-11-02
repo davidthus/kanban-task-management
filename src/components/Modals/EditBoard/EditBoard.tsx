@@ -74,9 +74,9 @@ function EditBoard() {
 
   return (
     <Wrapper onSubmit={onSubmit}>
-      <Title>Add New Board</Title>
+      <Title>Edit Board</Title>
       <Section>
-        <Subheading>Name</Subheading>
+        <Subheading>Board Name</Subheading>
         <FieldWrapper>
           <Input
             error={
@@ -114,7 +114,7 @@ function EditBoard() {
         </FieldWrapper>
       </Section>
       <Section>
-        <Subheading>Columns</Subheading>
+        <Subheading>Board Columns</Subheading>
         <ColumnsContainer>
           {fields.map((field, index) => (
             <FormFieldArray
@@ -132,7 +132,7 @@ function EditBoard() {
           + Add New Column
         </ButtonSecondary>
       </Section>
-      <PrimaryButtonS type="submit">Create New Board</PrimaryButtonS>
+      <PrimaryButtonS type="submit">Save Changes</PrimaryButtonS>
     </Wrapper>
   );
 }

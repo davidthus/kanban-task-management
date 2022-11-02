@@ -133,7 +133,18 @@ function ViewTask() {
               <VerticalDotsIcon />
               {popoutOpen && (
                 <Popout>
-                  <EditButton>Edit Task</EditButton>
+                  <EditButton
+                    onClick={() =>
+                      dispatch(
+                        openModal({
+                          modalDetail: state.modal.modalDetail,
+                          modalType: "edit-task",
+                        })
+                      )
+                    }
+                  >
+                    Edit Task
+                  </EditButton>
                   <DeleteButton
                     onClick={() =>
                       dispatch(
