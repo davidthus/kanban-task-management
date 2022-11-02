@@ -24,4 +24,9 @@ export const ButtonsWrapper = styled.div`
   width: 100%;
   grid-template-columns: 1fr 1fr;
   gap: 1.5rem;
+
+  @media (max-width: 525px) {
+    grid-template: 1fr 1fr / 1fr;
+    gap: 1rem;
+  }
 `;

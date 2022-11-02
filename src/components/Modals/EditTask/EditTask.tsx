@@ -4,7 +4,7 @@ import Select from "react-select";
 import { useTheme } from "styled-components";
 import { useAppDispatch, useAppSelector } from "../../../app/hooks";
 import { editTask } from "../../../features/boardsSlice";
-import { changeModalsDetail, closeModal } from "../../../features/modalSlice";
+import { closeModal } from "../../../features/modalSlice";
 import { ButtonSecondary, PrimaryButtonS } from "../../../shared/buttons";
 import {
   ErrorText,

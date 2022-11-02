@@ -12,6 +12,12 @@ export const ModalWrapper = styled(motion.section)`
   flex-direction: column;
   align-items: center;
   background-color: ${({ theme }: themeType) => theme.asideBg};
+
+  @media (max-width: 525px) {
+    max-width: 343px;
+    width: 100%;
+    padding: 1.5rem;
+  }
 `;
 
 export const SidebarModalWrapper = styled(motion.section)`
